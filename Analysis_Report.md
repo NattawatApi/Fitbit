@@ -39,12 +39,11 @@ Process:
   
 Analyze:
   After cleaning all data, I decided to use SQL to manipulate and organize data. So, I uploaded the prepared files on BigQuery, and manipulated it. Referring to the objectives, I would like to analyze both activity and sleep data having the day as a primary key. Thereby, I had to organize and merge the data from both tables into a new one. As a result, I eventually created the new table by writing the following code:
- 
-  "WITH activity AS
-  (SELECT
+
+"WITH activity AS (
+  SELECT
     Day day,
     COUNT(DISTINCT(Id)) total_customer,
-    SUM(TotalSteps) total_step,
     ROUND(SUM(TotalDistance),2) total_distance,
     CASE
       WHEN Day = 'Monday' THEN 1
@@ -54,34 +53,34 @@ Analyze:
       WHEN Day = 'Friday' THEN 5
       WHEN Day = 'Saturday' THEN 6
       ELSE 7
-    END day_seq
-  FROM
+     END day_seq
+   FROM
     `fitbit.activity_data`
-  GROUP BY
+   GROUP BY
     Day
-  ORDER BY
+   ORDER BY
     day_seq),
-
+    
   sleep AS (
     SELECT
       Day day,
       ROUND(SUM(TotalMinutesAsleep)) total_sleep_min,
       CASE
-        WHEN Day = 'Monday' THEN 1
-        WHEN Day = 'Tuesday' THEN 2
+         WHEN Day = 'Monday' THEN 1
+         WHEN Day = 'Tuesday' THEN 2
         WHEN Day = 'Wednesday' THEN 3
         WHEN Day = 'Thursday' THEN 4
         WHEN Day = 'Friday' THEN 5
         WHEN Day = 'Saturday' THEN 6
         ELSE 7
-      END day_seq
+     END day_seq
     FROM
       `fitbit.sleep_data`
     GROUP BY
       Day
     ORDER BY
       day_seq)
-
+      
 SELECT
   activity.day,
   activity.total_customer,
