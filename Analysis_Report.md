@@ -114,27 +114,27 @@ Share:
   
 "fb <- read_csv("fitbit.csv")
 
-id <- select(fb, day, Category, value)
+id <- select(fb, day, total_customer)
 
-step <- select(fb, day, Category, value)
+step <- select(fb, day, total_step)
 
-distance <- select(fb, day, Category, value)
+distance <- select(fb, day, total_distance)
 
-sleep <- select(fb, day, Category, value)
+sleep <- select(fb, day, total_sleep_min)
 
-id_plot <- ggplot(data=id, aes(day, value, fill = day)) +
+id_plot <- ggplot(data=id, aes(day, total_customer, fill = day)) +
   geom_bar(stat = "Identity") + labs(title = "Total Customer Each Day") +
   theme(text = element_text(size = 8))
   
-step_plot <- ggplot(data=step, aes(day, value, fill = day)) +
+step_plot <- ggplot(data=step, aes(day, total_step, fill = day)) +
   geom_bar(stat = "Identity") + labs(title = "Total Step Each Day") +
   theme(text = element_text(size = 8))
   
-dist_plot <- ggplot(data=distance, aes(day, value, fill = day)) +
+dist_plot <- ggplot(data=distance, aes(day, total_distance, fill = day)) +
   geom_bar(stat = "Identity") + labs(title = "Total Distance Each Day") +
   theme(text = element_text(size = 8))
   
-sleep_plot <- ggplot(data=sleep, aes(day, value, fill = day)) +
+sleep_plot <- ggplot(data=sleep, aes(day, total_sleep_min, fill = day)) +
   geom_bar(stat = "Identity") + labs(title = "Total Sleep Each Day") +
   theme(text = element_text(size = 8))
 
@@ -147,6 +147,4 @@ grid.arrange(id_plot, step_plot, dist_plot, sleep_plot, ncol = 2)"
   
 Act:
   In cpnclusion, it shows that every customers using smmart devices constantly exercise everyday during a record. Moreover, it displays that Tuesday is the most active day which customers take a longest distance and most step to exercise. On the other hand, Sunday is the least active day of the week. In addition, I also found that on the day customers take a longer distance of exercising, they will often take a lomger sleep time on the same day.
-  As a result, most of customers use smart devices to analyze and monitor thier health by statistically recording their daily activity, for instance exercising and sleeping. Nevertheless, the result represents that some customer occasionally sleep less or more than enough which it's able to directly affect their health. Consequently, I relize that it would be better if there is a service or device being able to automatically suggest a proper length of sleep to the customers.
-  
-  
+  As a result, most of customers use smart devices to analyze and monitor thier health by statistically recording their daily activity, for instance exercising and sleeping. Nevertheless, the result represents that some customer occasionally sleep less or more than enough which it's able to directly affect their health. Consequently, I relize that it would be better if there is a service or device being able to automatically suggest a proper length of sleep to the customers, along with automatic notification an appropriate bed time and wake-up time.
