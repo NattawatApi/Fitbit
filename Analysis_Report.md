@@ -101,10 +101,18 @@ ORDER BY
 
   The code gave me the table of summarized data having the day as a primary key, a total customers exercising each day, a total step that customers took each day, a total distance each day, and a total minute customers slept each day.
   
+  Additionally, I also analyze the correlation betwwen customer's sleep behavior and exercising behavior by coding on R with the following code:
+  
+  "fb <- read_csv("fitbit.csv")
+  
+  cor(fb$total_sleep_min,fb$total_distance)"
+  
+  The result came out that the correlation of total distance and total sleep is 0.67. It seems that both of them are slightly related to each others.
+  
 Share:
   To understanably visualize a summarized data, I decided to display it in 4 bar charts showing a different data contained in each column. Consequently, I used R to visualize and summarized it by writing the following code:
   
-  "fb <- read_csv("fitbit.csv")
+"fb <- read_csv("fitbit.csv")
 
 id <- select(fb, day, Category, value)
 
@@ -132,9 +140,13 @@ sleep_plot <- ggplot(data=sleep, aes(day, value, fill = day)) +
 
 grid.arrange(id_plot, step_plot, dist_plot, sleep_plot, ncol = 2)"
 
-  [fitbit_plot.pdf](https://github.com/NattawatApi/Fitbit/files/9594218/fitbit_plot.pdf)
+  ![Fitbit Bar Charts](https://user-images.githubusercontent.com/113785212/191026781-5fdb3874-81fc-47d6-ab8e-3f6f4a6a2f92.png)
+  [fitbit_plot.pdf](https://github.com/NattawatApi/Fitbit/files/9600857/fitbit_plot.pdf)
 
   The result was saved as pdf file, and showed the summary of analysis in an effective and comprehensive way.
   
 Act:
-  Due to the data summary, 
+  In cpnclusion, it shows that every customers using smmart devices constantly exercise everyday during a record. Moreover, it displays that Tuesday is the most active day which customers take a longest distance and most step to exercise. On the other hand, Sunday is the least active day of the week. In addition, I also found that on the day customers take a longer distance of exercising, they will often take a lomger sleep time on the same day.
+  As a result, most of customers use smart devices to analyze and monitor thier health by statistically recording their daily activity, for instance exercising and sleeping. Nevertheless, the result represents that some customer occasionally sleep less or more than enough which it's able to directly affect their health. Consequently, I relize that it would be better if there is a service or device being able to automatically suggest a proper length of sleep to the customers.
+  
+  
