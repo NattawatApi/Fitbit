@@ -41,6 +41,7 @@ Analyze:
   After cleaning all data, I decided to use SQL to manipulate and organize data. So, I uploaded the prepared files on BigQuery, and manipulated it. Referring to the objectives, I would like to analyze both activity and sleep data having the day as a primary key. Thereby, I had to organize and merge the data from both tables into a new one. As a result, I eventually created the new table by writing the following code:
 
 "WITH activity AS (
+
   SELECT
     Day day,
     COUNT(DISTINCT(Id)) total_customer,
@@ -145,5 +146,5 @@ grid.arrange(id_plot, step_plot, dist_plot, sleep_plot, ncol = 2)"
   The result was saved as pdf file, and showed the summary of analysis in an effective and comprehensive way.
   
 Act:
-  In cpnclusion, it shows that every customers using smmart devices constantly exercise everyday during a record. Moreover, it displays that Tuesday is the most active day which customers take a longest distance and most step to exercise. On the other hand, Sunday is the least active day of the week. In addition, I also found that on the day customers take a longer distance of exercising, they will often take a lomger sleep time on the same day.
+  In conclusion, it shows that every customers using smmart devices constantly exercise everyday during a record. Moreover, it displays that Tuesday is the most active day which customers take a longest distance and most step to exercise. On the other hand, Sunday is the least active day of the week. In addition, I also found that on the day customers take a longer distance of exercising, they will often take a lomger sleep time on the same day.
   As a result, most of customers use smart devices to analyze and monitor thier health by statistically recording their daily activity, for instance exercising and sleeping. Nevertheless, the result represents that some customer occasionally sleep less or more than enough which it's able to directly affect their health. Consequently, I relize that it would be better if there is a service or device being able to automatically suggest a proper length of sleep to the customers, along with automatic notification an appropriate bed time and wake-up time.
