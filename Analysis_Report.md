@@ -41,7 +41,6 @@ Analyze:
   After cleaning all data, I decided to use SQL to manipulate and organize data. So, I uploaded the prepared files on BigQuery, and manipulated it. Referring to the objectives, I would like to analyze both activity and sleep data having the day as a primary key. Thereby, I had to organize and merge the data from both tables into a new one. As a result, I eventually created the new table by writing the following code:
 
 "WITH activity AS (
-
   SELECT
     Day day,
     COUNT(DISTINCT(Id)) total_customer,
