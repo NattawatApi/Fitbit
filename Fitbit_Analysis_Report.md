@@ -44,16 +44,12 @@ Analyze:
 
   The code gave me the table of summarized data having the day as a primary key, a total customers exercising each day, a total step that customers took each day, a total distance each day, and a total minute customers slept each day.
   
-  Additionally, I also analyze the correlation betwwen customer's sleep behavior and exercising behavior by coding on R with the following code:
-  
-  "fb <- read_csv("fitbit.csv")
-  
-  cor(fb$total_sleep_min,fb$total_distance)"
+  Additionally, I also analyze the correlation betwwen customer's sleep behavior and exercising behavior by coding with R, the code is contained in the "R_fitbit" file:
   
   The result came out that the correlation of total distance and total sleep is 0.67. It seems that both of them are slightly related to each others.
   
 Share:
-  To understanably visualize a summarized data, I decided to display it in 4 bar charts showing a different data contained in each column. Consequently, I used R to visualize and summarize it, the code is contained in "R_Fitbit" file:
+  To understanably visualize a summarized data, I decided to display it in 4 bar charts showing a different data contained in each column. Consequently, I used R to visualize and summarize it as the following visualisation:
   
 
   ![Fitbit Bar Charts](https://user-images.githubusercontent.com/113785212/191079070-1fd0d4a7-7e08-4bb5-a397-fea3d4cde9c8.png)
