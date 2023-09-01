@@ -38,63 +38,7 @@ Process:
   But only cleaning the data in dailyActivity_merged.csv file wasn't enough. Consequently, I had to clean the data in sleepDay_merged.csv as well, which the entire steps of cleaning was as same as the step of dailyActivity_merged.csv as I mentioned earlier.
   
 Analyze:
-  After cleaning all data, I decided to use SQL to manipulate and organize data. So, I uploaded the prepared files on BigQuery, and manipulated it. Referring to the objectives, I would like to analyze both activity and sleep data having the day as a primary key. Thereby, I had to organize and merge the data from both tables into a new one. As a result, I eventually created the new table by writing the following code:
-
-"WITH activity AS (
-  SELECT
-    Day day,
-    COUNT(DISTINCT(Id)) total_customer,
-    ROUND(SUM(TotalDistance),2) total_distance,
-    CASE
-      WHEN Day = 'Monday' THEN 1
-      WHEN Day = 'Tuesday' THEN 2
-      WHEN Day = 'Wednesday' THEN 3
-      WHEN Day = 'Thursday' THEN 4
-      WHEN Day = 'Friday' THEN 5
-      WHEN Day = 'Saturday' THEN 6
-      ELSE 7
-     END day_seq
-   FROM
-    `fitbit.activity_data`
-   GROUP BY
-    Day
-   ORDER BY
-    day_seq),
-    
-  sleep AS (
-    SELECT
-      Day day,
-      ROUND(SUM(TotalMinutesAsleep)) total_sleep_min,
-      CASE
-         WHEN Day = 'Monday' THEN 1
-         WHEN Day = 'Tuesday' THEN 2
-        WHEN Day = 'Wednesday' THEN 3
-        WHEN Day = 'Thursday' THEN 4
-        WHEN Day = 'Friday' THEN 5
-        WHEN Day = 'Saturday' THEN 6
-        ELSE 7
-     END day_seq
-    FROM
-      `fitbit.sleep_data`
-    GROUP BY
-      Day
-    ORDER BY
-      day_seq)
-      
-SELECT
-  activity.day,
-  activity.total_customer,
-  activity.total_step,
-  activity.total_distance,
-  sleep.total_sleep_min
-FROM
-  activity
-JOIN
-  sleep
-ON
-  activity.day = sleep.day
-ORDER BY
-  activity.day_seq"
+  After cleaning all data, I decided to use SQL to manipulate and organize data. So, I uploaded the prepared files on BigQuery, and manipulated it. Referring to the objectives, I would like to analyze both activity and sleep data having the day as a primary key. Thereby, I had to organize and merge the data from both tables into a new one. As a result, I eventually created the new table by coding SQL, the code is stored in "SQL_Fitbit" file in the repository:
   
   ![Summarized Table](https://user-images.githubusercontent.com/113785212/190912448-a5f481e6-6653-438c-9b05-a280ce425788.png)
 
