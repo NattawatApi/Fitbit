@@ -53,35 +53,8 @@ Analyze:
   The result came out that the correlation of total distance and total sleep is 0.67. It seems that both of them are slightly related to each others.
   
 Share:
-  To understanably visualize a summarized data, I decided to display it in 4 bar charts showing a different data contained in each column. Consequently, I used R to visualize and summarized it by writing the following code:
+  To understanably visualize a summarized data, I decided to display it in 4 bar charts showing a different data contained in each column. Consequently, I used R to visualize and summarize it, the code is contained in "R_Fitbit" file:
   
-"fb <- read_csv("fitbit.csv")
-
-id <- select(fb, day, total_customer)
-
-step <- select(fb, day, total_step)
-
-distance <- select(fb, day, total_distance)
-
-sleep <- select(fb, day, total_sleep_min)
-
-id_plot <- ggplot(data=id, aes(factor(fb$day, level = unique(fb$day)), total_customer, fill = day)) +
-  geom_bar(stat = "Identity") + labs(title = "Total Customer Each Day", x = "Day", y = "Customers") +
-  theme(text = element_text(size = 8))
-  
-step_plot <- ggplot(data=step, aes(factor(fb$day, level = unique(fb$day)), total_step, fill = day)) +
-  geom_bar(stat = "Identity") + labs(title = "Total Step Each Day", x = "Day", y = "Steps") +
-  theme(text = element_text(size = 8))
-  
-dist_plot <- ggplot(data=distance, aes(factor(fb$day, level = unique(fb$day)), total_distance, fill = day)) +
-  geom_bar(stat = "Identity") + labs(title = "Total Distance Each Day", x = "Day", y = "Distance") +
-  theme(text = element_text(size = 8))
-  
-sleep_plot <- ggplot(data=sleep, aes(factor(fb$day, level = unique(fb$day)), total_sleep_min, fill = day)) +
-  geom_bar(stat = "Identity") + labs(title = "Total Sleep Each Day", x = "Day", y = "Sleep Minutes") +
-  theme(text = element_text(size = 8))
-
-grid.arrange(id_plot, step_plot, dist_plot, sleep_plot, ncol = 2)"
 
   ![Fitbit Bar Charts](https://user-images.githubusercontent.com/113785212/191079070-1fd0d4a7-7e08-4bb5-a397-fea3d4cde9c8.png)
   [Fitbit_plots.pdf](https://github.com/NattawatApi/Fitbit/files/9601108/Fitbit_plots.pdf)
